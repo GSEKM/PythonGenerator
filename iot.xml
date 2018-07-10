@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Board xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
+  <Arduino digitalPorts = "24" analogPorts = "5" model = "UNO" conector="//@Motor.1 //@Motor.0 //@Motor.2"/>
+  <Motor degrees="20" library="motorLib" name="motor20" digitalPorts="2"/>
+  <Motor degrees="10" library="motorLib"/>
+  <Motor library="motorLib"/>
+</Board>

@@ -42,7 +42,7 @@ with open('gen.cpp', 'a') as file:
 
             for port in range(0,int(component.get('digitalPorts'))):
                 digitalPorts+=1
-                p(component.get('type'),' ',component.get('name'),' = ', component.get('type'),'(',  port,')')
+                p(component.get('type'),' ',component.get('name'),' = ', component.get('type'),'(',  digitalPorts,')')
                 
 
 

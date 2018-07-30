@@ -1,0 +1,24 @@
+[submodule "arduino-libraries/Stepper"]
+	path = arduino-libraries/Stepper
+	url = https://github.com/arduino-libraries/Stepper
+[submodule "arduino-libraries/Servo"]
+	path = arduino-libraries/Servo
+	url = https://github.com/arduino-libraries/Servo
+[submodule "arduino-libraries/Ethernet"]
+	path = arduino-libraries/Ethernet
+	url = https://github.com/arduino-libraries/Ethernet
+[submodule "arduino-libraries/Mouse"]
+	path = arduino-libraries/Mouse
+	url = https://github.com/arduino-libraries/Mouse
+[submodule "arduino-libraries/WiFi"]
+	path = arduino-libraries/WiFi
+	url = https://github.com/arduino-libraries/WiFi
+[submodule "arduino-libraries/GSM"]
+	path = arduino-libraries/GSM
+	url = https://github.com/arduino-libraries/GSM
+[submodule "arduino-libraries/SD"]
+	path = arduino-libraries/SD
+	url = https://github.com/arduino-libraries/SD
+[submodule "arduino-libraries/LiquidCrystal"]
+	path = arduino-libraries/LiquidCrystal
+	url = https://github.com/arduino-libraries/LiquidCrystal

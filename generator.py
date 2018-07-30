@@ -6,7 +6,6 @@ root = tree.getroot()
 
 
 
-
 file = open('gen.cpp', 'w')  # clear file
 with open('gen.cpp', 'a') as file:
 

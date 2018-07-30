@@ -6,6 +6,4 @@
   <Motor type ="stepper" degrees="50" library="libStepper" name="motor3" digitalPorts="1"/>
   <Motor type ="stepper" degrees="60" library="libStepper" name="motor4" digitalPorts="1"/>
   <Motor type ="stepper" degrees="70" library="libStepper" name="motor5" digitalPorts="1"/>
-
-
 </Board>

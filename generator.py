@@ -32,10 +32,13 @@ with open('gen.cpp', 'a') as file:
             analogPorts=0
 
         else:
-            lib = component.get('library')
-            if lib not in libs:
-                libs.append(lib)
-                p('#include <',lib,'>')
+            libName = component.get('library')
+            libPath= 'arduino-libraries/'+libName+'/src/'+libName+'.h'
+            libFile = open('arduino-libraries/'+libName+'/src/'+libName+'.h','r')
+            if libName not in libs:
+                libs.append(libName)
+                p('#include <'+libPath+'>')
+                # p('#include <',libName,'>')
             
 
 

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Board xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
   <Arduino digitalPorts = "24" analogPorts = "5" model = "UNO" connector="//@Motor.1 //@Motor.0 //@Motor.2"/>
-  <Motor type ="servo" degrees="30" library="libServo" name="motor1" digitalPorts="1"/>
-  <Motor type ="servo" degrees="40" library="libServo" name="motor2" digitalPorts="1"/>
-  <Motor type ="stepper" degrees="50" library="libStepper" name="motor3" digitalPorts="1"/>
-  <Motor type ="stepper" degrees="60" library="libStepper" name="motor4" digitalPorts="1"/>
-  <Motor type ="stepper" degrees="70" library="libStepper" name="motor5" digitalPorts="1"/>
-</Board>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
+ </Board>

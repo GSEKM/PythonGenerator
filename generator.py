@@ -4,6 +4,9 @@ import xml.etree.ElementTree as ET
 tree = ET.parse('./iot.xml')
 root = tree.getroot()
 
+methods=[]
+
+
 file = open('gen.cpp', 'w')  # clear file
 with open('gen.cpp', 'a') as file:
 
@@ -29,6 +32,9 @@ with open('gen.cpp', 'a') as file:
             analogPorts = 0
 
         else:
+            method = component.get('method')
+            p(method)
+            methods.append(method)
             libName = component.get('library')
             libPath = 'arduino-libraries/'+libName+'/src/'+libName+'.h'
             libFile = open('arduino-libraries/'+libName +
@@ -37,6 +43,25 @@ with open('gen.cpp', 'a') as file:
                 libs.append(libName)
                 p('#include <'+libPath+'>')
                 # p('#include <',libName,'>')
+
+                with open(libPath) as file_iterator:
+                    for line in file_iterator:
+                        if "changethis" in line:
+                            # print(file_iterator)
+                            print (next(file_iterator))
+
+
+            # with open(libFile) as f:
+            #     while 'setSpeed(' not in f.readline():
+            #         continue
+            #     print(f.readlines())
+
+            # iterator = iter(libFile.splitlines())
+            # for line in iterator:
+            #     if "setSpeed(" in line:
+            #         # print next(iterator)
+            #         print (line)
+            
 
             for port in range(0, int(component.get('digitalPorts'))):
                 digitalPorts += 1
@@ -50,3 +75,4 @@ with open('gen.cpp', 'a') as file:
 
     p('void setup(){\n\n}')
     p('void loop(){\n\n}')
+    # print(methods)

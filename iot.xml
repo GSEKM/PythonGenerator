@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Board xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
   <Arduino digitalPorts = "24" analogPorts = "5" model = "UNO" connector="//@Motor.1 //@Motor.0 //@Motor.2"/>
-  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
-  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
-  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1"/>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1" method="Y(int x)"/>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1" method="Turn(float x)"/>
+  <Component type ="servo" degrees="30" library="Servo" name="motor1" digitalPorts="1" method="Stop()"/>
  </Board>

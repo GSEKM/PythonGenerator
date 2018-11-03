@@ -3,7 +3,9 @@ from tkinter import ttk
 
 
 methods = ['Y(int x)', 'Turn(float x)', 'Stop()']
+methodsLib = ['Servo();\n', 'uint8_t attach(int pin, int min, int max); ', 'void write(int value); ', 'int read();', 'bool attached(); ']
 libraries = ['Servo,','Servo,','Servo,']
+
 
 root = Tk()
 root.configure(background='grey')
@@ -34,9 +36,9 @@ for method in methods: #Rows
         elif j == 1:
 
             variable = StringVar(root)
-            variable.set("one") # default value
+            variable.set("          ") # default value
 
-            b = OptionMenu(root, variable, "one", "two", "three")
+            b = OptionMenu(*(root, variable) + tuple(methodsLib))
             # b = Label(text = "method",font=("Arial", 20))
             b.grid(row=methods.index(method)+1, column=j+1)
             
@@ -54,3 +56,4 @@ for method in methods: #Rows
 
 
 mainloop()# root.mainloop()
+

@@ -5,7 +5,7 @@ tree = ET.parse('./iot.xml')
 root = tree.getroot()
 
 methods=[]
-
+libMethods = []
 
 file = open('gen.cpp', 'w')  # clear file
 with open('gen.cpp', 'a') as file:
@@ -33,7 +33,7 @@ with open('gen.cpp', 'a') as file:
 
         else:
             method = component.get('method')
-            p(method)
+            # p(method)
             methods.append(method)
             libName = component.get('library')
             libPath = 'arduino-libraries/'+libName+'/src/'+libName+'.h'
@@ -44,11 +44,26 @@ with open('gen.cpp', 'a') as file:
                 p('#include <'+libPath+'>')
                 # p('#include <',libName,'>')
 
+                longComment=False
                 with open(libPath) as file_iterator:
                     for line in file_iterator:
-                        if "changethis" in line:
-                            # print(file_iterator)
-                            print (next(file_iterator))
+                        if longComment:
+                            if "*/" in line:
+                                longComment=False
+                        else:
+                            if "/*" in line: #long comment
+                                longComment=True
+
+                            if "()" in line or "(int" in line:
+                            # if any(elem in ["void","int","bool"] for elem in line):
+
+                                libMethod=line.split("//")[0].replace("  ","")
+                                libMethods.append(libMethod)
+
+                                # print(file_iterator)
+                                print (next(file_iterator))
+                            else:
+                                print("denied"+ line)
 
 
             # with open(libFile) as f:
@@ -75,4 +90,4 @@ with open('gen.cpp', 'a') as file:
 
     p('void setup(){\n\n}')
     p('void loop(){\n\n}')
-    # print(methods)
+    print(libMethods)

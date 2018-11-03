@@ -83,6 +83,10 @@ with open('gen.cpp', 'a') as file:
                 p(component.get('type'), ' ', component.get('name'),
                   ' = ', component.get('type'), '(',  digitalPorts, ')')
 
+            for port in range(0,int(component.get('digitalPorts'))):
+                digitalPorts+=1
+                p(component.get('type'),' ',component.get('name'),' = ', component.get('type'),'(',  digitalPorts,')')
+                
     p('// Code generated for Arduino ', arduinoModel)
     p('// with ', totalDigitalPorts, ' digital ports in total with ',
       digitalPorts, ' in use and ', totalDigitalPorts-digitalPorts, ' free')

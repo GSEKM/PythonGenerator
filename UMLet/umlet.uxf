@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>18</zoom_level>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>162</x>
+      <y>288</y>
+      <w>235</w>
+      <h>181</h>
+    </coordinates>
+    <panel_attributes>// Do not change this
+Arduino
+------------------------
+model = UNO
+digitalPorts = 24
+analogPorts = 5
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//This is a tutorial for a self resizing component 
+//In addition you are able to resize at manually
+//As soon as it is resized manually a new text is
+//added to the property panel
+setAutoresize(20,20,10);
+
+int y=textHeight();
+
+boolean center = true;
+for(int i = 0; i &lt; textlines.size(); i++) {
+	String textline = textlines.get(i);
+	if(textline.equals("--")) {
+		drawLineHorizontal((int) (y-textHeight()*0.7));
+		center = false;
+		if (!isManualResized()) height -= (int) (textHeight()*0.75);
+		y += textHeight()*0.3;
+	}
+	else {
+		if (center) y += printCenter(textline,y); 
+		else y += printLeft(textline,y);
+	}
+}
+
+drawRectangle(0,0,onGrid(width),onGrid(height));</custom_code>
+  </element>
+</diagram>

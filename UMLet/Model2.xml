@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>690</y>
+      <x>180</x>
+      <y>930</y>
       <w>140</w>
       <h>80</h>
     </coordinates>
@@ -20,8 +20,8 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>770</y>
+      <x>380</x>
+      <y>1010</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -34,8 +34,8 @@ group=4
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>690</y>
+      <x>620</x>
+      <y>940</y>
       <w>140</w>
       <h>80</h>
     </coordinates>
@@ -51,8 +51,8 @@ group=1
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>870</x>
-      <y>860</y>
+      <x>490</x>
+      <y>1160</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
@@ -63,20 +63,20 @@ if &gt;= 20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>800</y>
-      <w>90</w>
-      <h>120</h>
+      <x>440</x>
+      <y>1040</y>
+      <w>80</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 True</panel_attributes>
-    <additional_attributes>70.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>950</y>
+      <x>760</x>
+      <y>1250</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -90,8 +90,8 @@ group=5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>880</y>
+      <x>670</x>
+      <y>1180</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -102,8 +102,8 @@ False</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>770</y>
+      <x>180</x>
+      <y>1010</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -117,8 +117,8 @@ group=3
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>670</y>
+      <x>380</x>
+      <y>910</y>
       <w>140</w>
       <h>100</h>
     </coordinates>
@@ -133,8 +133,8 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>770</y>
+      <x>620</x>
+      <y>1020</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -148,30 +148,30 @@ group=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>780</y>
-      <w>80</w>
+      <x>310</x>
+      <y>1020</y>
+      <w>90</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>800</y>
-      <w>70</w>
-      <h>80</h>
+      <x>580</x>
+      <y>1050</y>
+      <w>130</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>110.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>860</y>
+      <x>760</x>
+      <y>1160</y>
       <w>140</w>
       <h>60</h>
     </coordinates>
@@ -186,8 +186,8 @@ group=5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>920</y>
+      <x>760</x>
+      <y>1220</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -202,8 +202,8 @@ group=5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>990</y>
+      <x>180</x>
+      <y>1260</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -216,8 +216,8 @@ group=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>900</y>
+      <x>180</x>
+      <y>1170</y>
       <w>140</w>
       <h>90</h>
     </coordinates>
@@ -232,8 +232,8 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>1020</y>
+      <x>180</x>
+      <y>1290</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -247,19 +247,19 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>920</y>
-      <w>220</w>
-      <h>140</h>
+      <x>310</x>
+      <y>1220</y>
+      <w>290</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>200.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>270.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>120</y>
+      <x>300</x>
+      <y>390</y>
       <w>100</w>
       <h>100</h>
     </coordinates>
@@ -269,24 +269,162 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>0</x>
-      <y>210</y>
-      <w>350</w>
+      <x>200</x>
+      <y>380</y>
+      <w>120</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>//test1&lt;
 lt=-&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;330.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
-      <y>220</y>
+      <x>110</x>
+      <y>390</y>
       <w>100</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>SimpleClass1</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>840</x>
+      <y>750</y>
+      <w>131</w>
+      <h>151</h>
+    </coordinates>
+    <panel_attributes>// Do not change this
+Arduino
+------------------------
+model = UNO
+digitalPorts = 24
+analogPorts = 5
+
+------------------------
+setup()
+loop()
+
+group=6</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//This is a tutorial for a self resizing component 
+//In addition you are able to resize at manually
+//As soon as it is resized manually a new text is
+//added to the property panel
+setAutoresize(20,20,10);
+
+int y=textHeight();
+
+boolean center = true;
+for(int i = 0; i &lt; textlines.size(); i++) {
+	String textline = textlines.get(i);
+	if(textline.equals("--")) {
+		drawLineHorizontal((int) (y-textHeight()*0.7));
+		center = false;
+		if (!isManualResized()) height -= (int) (textHeight()*0.75);
+		y += textHeight()*0.3;
+	}
+	else {
+		if (center) y += printCenter(textline,y); 
+		else y += printLeft(textline,y);
+	}
+}
+
+drawRectangle(0,0,onGrid(width),onGrid(height));</custom_code>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>670</x>
+      <y>690</y>
+      <w>131</w>
+      <h>151</h>
+    </coordinates>
+    <panel_attributes>// Do not change this
+Arduino
+------------------------
+model = UNO
+digitalPorts = 24
+analogPorts = 5
+
+------------------------
+setup()
+loop()
+
+group=6</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//This is a tutorial for a self resizing component 
+//In addition you are able to resize at manually
+//As soon as it is resized manually a new text is
+//added to the property panel
+setAutoresize(20,20,10);
+
+int y=textHeight();
+
+boolean center = true;
+for(int i = 0; i &lt; textlines.size(); i++) {
+	String textline = textlines.get(i);
+	if(textline.equals("--")) {
+		drawLineHorizontal((int) (y-textHeight()*0.7));
+		center = false;
+		if (!isManualResized()) height -= (int) (textHeight()*0.75);
+		y += textHeight()*0.3;
+	}
+	else {
+		if (center) y += printCenter(textline,y); 
+		else y += printLeft(textline,y);
+	}
+}
+
+drawRectangle(0,0,onGrid(width),onGrid(height));</custom_code>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>450</x>
+      <y>700</y>
+      <w>131</w>
+      <h>151</h>
+    </coordinates>
+    <panel_attributes>// Do not change this
+Arduino
+------------------------
+model = UNO
+digitalPorts = 24
+analogPorts = 5
+
+------------------------
+setup()
+loop()
+group=6
+</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//This is a tutorial for a self resizing component 
+//In addition you are able to resize at manually
+//As soon as it is resized manually a new text is
+//added to the property panel
+setAutoresize(20,20,10);
+
+int y=textHeight();
+
+boolean center = true;
+for(int i = 0; i &lt; textlines.size(); i++) {
+	String textline = textlines.get(i);
+	if(textline.equals("--")) {
+		drawLineHorizontal((int) (y-textHeight()*0.7));
+		center = false;
+		if (!isManualResized()) height -= (int) (textHeight()*0.75);
+		y += textHeight()*0.3;
+	}
+	else {
+		if (center) y += printCenter(textline,y); 
+		else y += printLeft(textline,y);
+	}
+}
+
+drawRectangle(0,0,onGrid(width),onGrid(height));</custom_code>
   </element>
 </diagram>

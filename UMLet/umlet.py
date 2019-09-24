@@ -212,26 +212,31 @@ def addInfoToRelations():
     for relation in relations:
         # print(relation.__dict__)
         if 'test' in relation.name:
-            x = int(relation.coordinates['x'])  # + 20
-            y = int(relation.coordinates['y'])  # + 20
-            w = int(relation.coordinates['w'])  # - 60
-            h = int(relation.coordinates['h'])  # - 60
+            additional = relation.additional.split(';')
+            print(additional)
+
+            xF = int(float(additional[0]))  # from and to
+            yF = int(float(additional[1]))
+            xT = int(float(additional[2]))
+            yT = int(float(additional[3]))
+
+            w = int(relation.coordinates['w'])
+            h = int(relation.coordinates['h'])
+
+            x1 = int(relation.coordinates['x']) + xF
+            y1 = int(relation.coordinates['y']) + yF
+            x2 = int(relation.coordinates['x']) + w - (w-xT)
+            y2 = int(relation.coordinates['y']) + h - (h-yT)
+
+            print(x1, y1, '   ', x2, y1, '     w:', w)
+            print(x1, y2, '   ', x2, y2, '     h:', h)
+
             print(relation.name)
 
-            additional = relation.additional.split(';')
-
-            print(x, y, '   ', x+w, y, '     w:', w)
-            print(x, y+h, '   ', x+w, y+h, '     h:', h)
             # print(additional[0])
             # print(additional[1])
             # print(additional[2])
             # print(additional[3])
-            print(additional)
-
-            xF = [additional[0]]  # from and to
-            yF = [additional[1]]
-            xT = [additional[2]]
-            yT = [additional[3]]
 
             toRight = False
             toLeft = False
@@ -252,19 +257,19 @@ def addInfoToRelations():
                 print('toTop')
 
             for component in components:
-                x1 = int(component.coordinates['x'])
-                y1 = int(component.coordinates['y'])
-                x2 = int(x1)+int(component.coordinates['w'])
-                y2 = int(y1)+int(component.coordinates['h'])
+                cx1 = int(component.coordinates['x'])
+                cy1 = int(component.coordinates['y'])
+                cx2 = int(cx1)+int(component.coordinates['w'])
+                cy2 = int(cy1)+int(component.coordinates['h'])
 
                 if 'SimpleClass' in component.name:
                     print(component.name)
-                    print(x1, y1, '     ', x2, y1)
-                    print(x1, y2, '     ', x2, y2)
+                    print(cx1, cy1, '     ', cx2, cy1)
+                    print(cx1, cy2, '     ', cx2, cy2)
 
-                    boundaries = [x1, x2, y1, y2]
-                    horizontal = range(x1, x2+1)
-                    vertical = range(y1, y2+1)
+                    boundaries = [cx1, cx2, cy1, cy2]
+                    horizontal = range(cx1, cx2+1)
+                    vertical = range(cy1, cy2+1)
                     # bond = [range(1, 4) + range(6, 99)]
                     # if 1 in bond:
                     #     print('in bound\n\n')
@@ -274,56 +279,56 @@ def addInfoToRelations():
                     # print(horizontal)
                     # print(x in horizontal)
                     if toLeft:
-                        if x in horizontal:
+                        if x1 in horizontal:
                             print('touching on horizontal')
                         if toTop:
-                            if y in vertical:
+                            if y1 in vertical:
 
                                 print('touching vertical')
                                 addThis(component, relation)
                         elif toBottom:
-                            if y+h in vertical:
+                            if y1+h in vertical:
                                 addThis(component, relation)
 
                                 print('touching vertical')
                         else:
-                            if (y+y+h)/2:
+                            if (y1+y1+h)/2:
                                 print('touching vertical')
                                 addThis(component, relation)
 
                     elif toRight:
-                        print(x+w, horizontal)
-                        if x+w in horizontal:
+                        print(x1+w, horizontal)
+                        if x1+w in horizontal:
                             print('touching on horizontal')
                         if toTop:
-                            print(y, vertical)
-                            if y in vertical:
+                            print(y1, vertical)
+                            if y1 in vertical:
                                 print('touching vertical')
                                 addThis(component, relation)
 
                         elif toBottom:
-                            if y+h in vertical:
+                            if y1+h in vertical:
                                 print('touching vertical')
                                 addThis(component, relation)
 
                         else:
-                            if((y+y+h)/2):
+                            if((y1+y1+h)/2):
                                 print('touching vertical')
                                 addThis(component, relation)
 
                     elif toTop:
                         # print(x, horizontal)
-                        if (x+x+w)/2 in horizontal:
+                        if (x1+x1+w)/2 in horizontal:
                             print('touching horizontal')
-                            print(y, vertical)
-                            if y in vertical:
+                            print(y1, vertical)
+                            if y1 in vertical:
                                 print('touching vertical')
                                 addThis(component, relation)
 
                     elif toBottom:
-                        if x in horizontal:
+                        if x1 in horizontal:
                             print('touching horizontal')
-                            if y+h in vertical:
+                            if y1+h in vertical:
                                 print('touching vertical')
                                 addThis(component, relation)
 
@@ -347,11 +352,11 @@ def printAll():
     #     print(item.group)
     # for item in components:
     #     print(item.__dict__)
-        # print(item.methods)
-        # print('digital', item.digitalPorts)
+    #     print(item.methods)
+    #     print('digital', item.digitalPorts)
     #     print(item.group)
-    for item in relations:
-        print(item.fromEle)
+    # for item in relations:
+    #     print(item.fromEle)
 
     print(arduino.__dict__)
     # print(arduino.methods[0].__dict__)

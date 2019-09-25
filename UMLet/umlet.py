@@ -28,8 +28,8 @@ arduino = Arduino
 
 
 class Method:
-    def __init__(self, text, group, coordinates):
-        self.text = text
+    def __init__(self, name, group, coordinates):
+        self.name = name
         self.group = group
         self.coordinates = coordinates
     text = 'none'
@@ -189,25 +189,40 @@ def addComponentsToRelation(fromComponent, toComponent, relation):
             child.toEle = toComponent
 
 
+def checkBoundaries(x, y, element):
+    x1 = int(element.coordinates['x'])
+    y1 = int(element.coordinates['y'])
+    x2 = int(x1)+int(element.coordinates['w'])
+    y2 = int(y1)+int(element.coordinates['h'])
+    horizontal = range(x1, x2+1)
+    vertical = range(y1, y2+1)
+    if x in horizontal and y in vertical:
+        return element
+
+
 def getElementAtPosition(x, y):
     # print('looking for component at', x, y)
     for component in components:
-        cx1 = int(component.coordinates['x'])
-        cy1 = int(component.coordinates['y'])
-        cx2 = int(cx1)+int(component.coordinates['w'])
-        cy2 = int(cy1)+int(component.coordinates['h'])
+        result = checkBoundaries(x, y, component)
+        if result:
+            return result
 
-        boundaries = [cx1, cx2, cy1, cy2]
-        horizontal = range(cx1, cx2+1)
-        vertical = range(cy1, cy2+1)
+        for method in component.methods:
+            result = checkBoundaries(x, y, method)
+            if result:
+                return result
 
-        # if 'SimpleClass' in component.name:
-        # print(component.name)
-        # print(cx1, cy1, '     ', cx2, cy1)
-        # print(cx1, cy2, '     ', cx2, cy2)
-
-        if x in horizontal and y in vertical:
-            return component
+    result = checkBoundaries(x, y, arduino)
+    if result:
+        return result
+    for method in arduino.methods:
+        result = checkBoundaries(x, y, method)
+        if result:
+            return result
+    # if 'SimpleClass' in component.name:
+    # print(component.name)
+    # print(cx1, cy1, '     ', cx2, cy1)
+    # print(cx1, cy2, '     ', cx2, cy2)
 
 
 def addInfoToRelations():
@@ -218,23 +233,6 @@ def addInfoToRelations():
         yF = int(float(additional[1]))
         xT = int(float(additional[2]))
         yT = int(float(additional[3]))
-
-        # if xF < xT:
-        #     toRight = True
-        #     toLeft = False
-        #     print('toRight')
-        # elif xF > xT:
-        #     toLeft = True
-        #     toRight = False
-        #     print('toLeft')
-        # if yF < yT:
-        #     toBottom = True
-        #     toTop = False
-        #     print('toBottom')
-        # elif yF > yT:
-        #     toTop = True
-        #     toBottom = False
-        #     print('toTop')
 
         w = int(relation.coordinates['w'])
         h = int(relation.coordinates['h'])
@@ -248,7 +246,7 @@ def addInfoToRelations():
         # print(additional)
         # print(x1, y1, '   ', x2, y1, '     w:', w)
         # print(x1, y2, '   ', x2, y2, '     h:', h)
-
+        print(getElementAtPosition(x2, y2))
         addComponentsToRelation(getElementAtPosition(
             x1, y1), getElementAtPosition(x2, y2), relation)
 

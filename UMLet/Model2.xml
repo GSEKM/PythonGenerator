@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>680</y>
+      <x>30</x>
+      <y>520</y>
       <w>140</w>
       <h>80</h>
     </coordinates>
@@ -19,8 +19,8 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>1040</y>
+      <x>290</x>
+      <y>570</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -33,8 +33,8 @@ group=4
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>590</y>
+      <x>920</x>
+      <y>360</y>
       <w>140</w>
       <h>80</h>
     </coordinates>
@@ -49,8 +49,8 @@ group=1
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>610</x>
-      <y>800</y>
+      <x>620</x>
+      <y>580</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
@@ -61,21 +61,21 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>830</y>
-      <w>170</w>
-      <h>190</h>
+      <x>420</x>
+      <y>590</y>
+      <w>220</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>True
 lt=-&gt;&gt;
 //relation</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>200.0;30.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
-      <y>1170</y>
+      <x>940</x>
+      <y>620</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -89,21 +89,21 @@ group=5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>820</y>
-      <w>100</w>
-      <h>320</h>
+      <x>800</x>
+      <y>590</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>False 
 lt=-&gt;&gt;
 //relation</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;300.0</additional_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>760</y>
+      <x>30</x>
+      <y>600</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -117,8 +117,8 @@ group=3
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>940</y>
+      <x>290</x>
+      <y>470</y>
       <w>140</w>
       <h>100</h>
     </coordinates>
@@ -133,8 +133,8 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>670</y>
+      <x>920</x>
+      <y>440</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -148,32 +148,32 @@ group=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>720</y>
-      <w>140</w>
-      <h>270</h>
+      <x>160</x>
+      <y>580</y>
+      <w>150</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 //relation</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;250.0</additional_attributes>
+    <additional_attributes>10.0;40.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>630</y>
-      <w>150</w>
-      <h>190</h>
+      <x>750</x>
+      <y>450</y>
+      <w>190</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 //relation</panel_attributes>
-    <additional_attributes>10.0;170.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
-      <y>1080</y>
+      <x>940</x>
+      <y>530</y>
       <w>140</w>
       <h>60</h>
     </coordinates>
@@ -188,8 +188,8 @@ group=5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
-      <y>1140</y>
+      <x>940</x>
+      <y>590</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -202,8 +202,8 @@ group=5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>510</y>
+      <x>460</x>
+      <y>420</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -216,8 +216,8 @@ group=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>420</y>
+      <x>460</x>
+      <y>330</y>
       <w>140</w>
       <h>90</h>
     </coordinates>
@@ -232,8 +232,8 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>540</y>
+      <x>460</x>
+      <y>450</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -247,13 +247,13 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>480</y>
-      <w>220</w>
-      <h>340</h>
+      <x>590</x>
+      <y>460</y>
+      <w>110</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 //relation</panel_attributes>
-    <additional_attributes>200.0;320.0;10.0;10.0</additional_attributes>
+    <additional_attributes>90.0;120.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

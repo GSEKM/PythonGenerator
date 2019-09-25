@@ -1,4 +1,5 @@
 import weakref
+import re
 import unicodedata
 import xml.etree.ElementTree as ET
 
@@ -250,6 +251,7 @@ def addInfoToRelations():
 
 
 def printAll():
+    pass
     # for item in methods:
     #     print(item.group)
     # for item in components:
@@ -257,13 +259,13 @@ def printAll():
     #     print(item.methods)
     #     print('digital', item.digitalPorts)
     #     print(item.group)
-    for relation in relations:
-        print(relation.name, 'aponta de ', relation.fromElement.name, ' para ',
-              relation.toElement.name, ' de ', relation.toElement.getParent().name)
+    # for relation in relations:
+    #     print(relation.name, 'aponta de ', relation.fromElement.name, ' para ',
+    #           relation.toElement.name, ' de ', relation.toElement.getParent().name)
 
-        print(relation.fromElement.getToElements())
-        print(relation.toElement, relation.toElement.name)
-        print('\n')
+    #     print(relation.fromElement.getToElements())
+    #     print(relation.toElement, relation.toElement.name)
+    #     print('\n')
 
     # print(arduino.__dict__)
     # print(arduino.methods[0].__dict__)
@@ -272,40 +274,52 @@ def printAll():
 def generateCode():
     file = open('./UMLet/gen.cpp', 'w')  # clear file
     with open('./UMLet/gen.cpp', 'a') as file:
+        file.truncate()
 
         def p(*args, **kwargs):
             print(''.join(map(str, args)), **kwargs)
             file.write(''.join(map(str, args)), **kwargs)
             file.write('\n')
-        file.truncate()
+
+        usedDigital = 0
+        usedAnalog = 0
+        for component in components:
+            usedDigital += component.digitalPorts
+            usedAnalog += component.analogPorts
 
         p('// Code generated for Arduino ', arduino.model)
         p('// with ', arduino.digitalPorts, ' digital ports in total with ',
-          200, ' in use and ', 200, ' free')
-        p('// and  ', arduino.analogPorts, ' analog ports in total')
+          usedDigital, ' in use and ', arduino.digitalPorts-usedDigital, ' free')
+        p('// and ', arduino.analogPorts, ' analog ports in total with ',
+          usedAnalog, ' in use and ', arduino.analogPorts - usedAnalog, ' free')
 
         for method in arduino.methods:
             p(method.name, '{\n')
 
-            for toElement in method.getToElements():
-                p(toElement.name)
+            for element in method.getToElements():
+                if 'if' in element.name:
+                    value = ''
 
-            p('\n}')
+                    for relation in relations:
+                        print(relation.name)
+                        if 'getThis' in relation.name:
+                            print('found')
+                            if relation.fromElement == element:
+                                value = relation.toElement.name
+
+                    check = re.sub(
+                        r'[0-9]+', '', element.name.replace('if', '').replace(' ', ''))
+                    condition = re.sub(
+                        r'[<>=]+', '', element.name.replace(
+                            'if', '').replace(' ', ''))
+
+                    p('if ( ', value, check, ' ', condition, '){ \n')
+
+                    p('\n}')
 
         for component in components:
             for method in component.methods:
                 p(method.name)
-
-        # print(libMethods)
-    # for port in range(0, int(component.get('digitalPorts'))):
-    #     digitalPorts += 1
-    #     p(component.get('type'), ' ', component.get('name'),
-    #       ' = ', component.get('type'), '(',  digitalPorts, ')')
-
-    # for port in range(0, int(component.get('digitalPorts'))):
-    #     digitalPorts += 1
-    #     p(component.get('type'), ' ', component.get('name'),
-    #       ' = ', component.get('type'), '(',  digitalPorts, ')')
 
 
 readUML()
@@ -313,4 +327,4 @@ addMethodsToComponents()
 addInfoToRelations()
 printAll()
 generateCode()
-print('-----------------------------------------------------')
+print('----------------------------TheEnd--------------------------------')

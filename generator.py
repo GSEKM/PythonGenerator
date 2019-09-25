@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 tree = ET.parse('./iot.xml')
 root = tree.getroot()
 
-methods=[]
+methods = []
 libMethods = []
 
 file = open('gen.cpp', 'w')  # clear file
@@ -44,27 +44,27 @@ with open('gen.cpp', 'a') as file:
                 p('#include <'+libPath+'>')
                 # p('#include <',libName,'>')
 
-                longComment=False
+                longComment = False
                 with open(libPath) as file_iterator:
                     for line in file_iterator:
                         if longComment:
                             if "*/" in line:
-                                longComment=False
+                                longComment = False
                         else:
-                            if "/*" in line: #long comment
-                                longComment=True
+                            if "/*" in line:  # long comment
+                                longComment = True
 
                             if "()" in line or "(int" in line:
-                            # if any(elem in ["void","int","bool"] for elem in line):
+                                # if any(elem in ["void","int","bool"] for elem in line):
 
-                                libMethod=line.split("//")[0].replace("  ","")
+                                libMethod = line.split(
+                                    "//")[0].replace("  ", "")
                                 libMethods.append(libMethod)
 
                                 # print(file_iterator)
-                                print (next(file_iterator))
+                                print(next(file_iterator))
                             else:
-                                print("denied"+ line)
-
+                                print("denied" + line)
 
             # with open(libFile) as f:
             #     while 'setSpeed(' not in f.readline():
@@ -76,17 +76,17 @@ with open('gen.cpp', 'a') as file:
             #     if "setSpeed(" in line:
             #         # print next(iterator)
             #         print (line)
-            
 
             for port in range(0, int(component.get('digitalPorts'))):
                 digitalPorts += 1
                 p(component.get('type'), ' ', component.get('name'),
                   ' = ', component.get('type'), '(',  digitalPorts, ')')
 
-            for port in range(0,int(component.get('digitalPorts'))):
-                digitalPorts+=1
-                p(component.get('type'),' ',component.get('name'),' = ', component.get('type'),'(',  digitalPorts,')')
-                
+            for port in range(0, int(component.get('digitalPorts'))):
+                digitalPorts += 1
+                p(component.get('type'), ' ', component.get('name'),
+                  ' = ', component.get('type'), '(',  digitalPorts, ')')
+
     p('// Code generated for Arduino ', arduinoModel)
     p('// with ', totalDigitalPorts, ' digital ports in total with ',
       digitalPorts, ' in use and ', totalDigitalPorts-digitalPorts, ' free')

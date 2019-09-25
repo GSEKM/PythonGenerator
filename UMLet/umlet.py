@@ -95,19 +95,9 @@ def readUML():
             name = attributes.splitlines()[0].replace('//', '')
             if 'method' in attributes:
                 global methods
-                # tempElement = {}
-                # tempElement = Method
-                # tempElement.text = methodText
-                # tempElement.coordinates = coordinates
-                # tempElement.group = group
-                # group = 0
                 methods.append(Method(methodText, group, coordinates))
-                # methods[len(methods):] = [tempElement]
-                # print('tempmethodgroup', methods[-1].group)
-                # method
 
             elif 'Arduino' in attributes:
-                # print('found')
                 global arduino
                 arduino.name = name
                 arduino.model = model
@@ -116,25 +106,12 @@ def readUML():
                 arduino.coordinates = coordinates
                 arduino.group = group
 
-            elif element[0].text == "Relation":
+            elif "relation" in attributes:
                 global relations
-                # tempElement = {}
-                # tempElement = Relation
-                # tempElement.additional = element[3].text
-                # tempElement.coordinates = coordinates
-                # tempElement.group = group
-
                 relations.append(
                     Relation(name, element[3].text, coordinates))
             else:
                 global components
-                # tempElement = {}
-                # tempElement = Component
-                # tempElement.digitalPorts = digitalPorts
-                # # print('here digital', tempElement.digitalPorts)
-                # tempElement.analogPorts = analogPorts
-                # tempElement.coordinates = coordinates
-                # tempElement.group = group
                 components.append(
                     Component(name, model, digitalPorts, analogPorts, lib, coordinates, group))
         # for method in methods:
@@ -203,153 +180,77 @@ def addMethodsToComponents():
         # print('method', method.group)
 
 
-def addThis(component, relation, direction):
+def addComponentsToRelation(fromComponent, toComponent, relation):
+    # print('adding:', fromComponent.name, toComponent.name, relation.name)
     global relations
     for child in relations:
         if child == relation:
-            if direction == 'to':
-                child.toEle = component
-            elif direction == 'from':
-                child.fromEle
+            child.fromEle = fromComponent
+            child.toEle = toComponent
+
+
+def getElementAtPosition(x, y):
+    # print('looking for component at', x, y)
+    for component in components:
+        cx1 = int(component.coordinates['x'])
+        cy1 = int(component.coordinates['y'])
+        cx2 = int(cx1)+int(component.coordinates['w'])
+        cy2 = int(cy1)+int(component.coordinates['h'])
+
+        boundaries = [cx1, cx2, cy1, cy2]
+        horizontal = range(cx1, cx2+1)
+        vertical = range(cy1, cy2+1)
+
+        # if 'SimpleClass' in component.name:
+        # print(component.name)
+        # print(cx1, cy1, '     ', cx2, cy1)
+        # print(cx1, cy2, '     ', cx2, cy2)
+
+        if x in horizontal and y in vertical:
+            return component
 
 
 def addInfoToRelations():
     for relation in relations:
-        # print(relation.__dict__)
-        if 'test' in relation.name:
-            additional = relation.additional.split(';')
-            print(additional)
+        additional = relation.additional.split(';')
 
-            xF = int(float(additional[0]))  # from and to
-            yF = int(float(additional[1]))
-            xT = int(float(additional[2]))
-            yT = int(float(additional[3]))
+        xF = int(float(additional[0]))  # from and to
+        yF = int(float(additional[1]))
+        xT = int(float(additional[2]))
+        yT = int(float(additional[3]))
 
-            w = int(relation.coordinates['w'])
-            h = int(relation.coordinates['h'])
+        # if xF < xT:
+        #     toRight = True
+        #     toLeft = False
+        #     print('toRight')
+        # elif xF > xT:
+        #     toLeft = True
+        #     toRight = False
+        #     print('toLeft')
+        # if yF < yT:
+        #     toBottom = True
+        #     toTop = False
+        #     print('toBottom')
+        # elif yF > yT:
+        #     toTop = True
+        #     toBottom = False
+        #     print('toTop')
 
-            x1 = int(relation.coordinates['x']) + xF
-            y1 = int(relation.coordinates['y']) + yF
-            x2 = int(relation.coordinates['x']) + w - (w-xT)
-            y2 = int(relation.coordinates['y']) + h - (h-yT)
+        w = int(relation.coordinates['w'])
+        h = int(relation.coordinates['h'])
 
-            print(x1, y1, '   ', x2, y1, '     w:', w)
-            print(x1, y2, '   ', x2, y2, '     h:', h)
+        x1 = int(relation.coordinates['x']) + xF
+        y1 = int(relation.coordinates['y']) + yF
+        x2 = int(relation.coordinates['x']) + w - (w-xT)
+        y2 = int(relation.coordinates['y']) + h - (h-yT)
 
-            print(relation.name)
+        # print(relation.name)
+        # print(additional)
+        # print(x1, y1, '   ', x2, y1, '     w:', w)
+        # print(x1, y2, '   ', x2, y2, '     h:', h)
 
-            # print(additional[0])
-            # print(additional[1])
-            # print(additional[2])
-            # print(additional[3])
-
-            toRight = False
-            toLeft = False
-            toBottom = False
-            toTop = False
-
-            if xF < xT:
-                toRight = True
-                print('toRight')
-            elif xF > xT:
-                toLeft = True
-                print('toLeft')
-            if yF < yT:
-                toBottom = True
-                print('toBottom')
-            elif yF > yT:
-                toTop = True
-                print('toTop')
-
-            for component in components:
-                cx1 = int(component.coordinates['x'])
-                cy1 = int(component.coordinates['y'])
-                cx2 = int(cx1)+int(component.coordinates['w'])
-                cy2 = int(cy1)+int(component.coordinates['h'])
-
-                if 'SimpleClass' in component.name:
-                    print(component.name)
-                    print(cx1, cy1, '     ', cx2, cy1)
-                    print(cx1, cy2, '     ', cx2, cy2)
-
-                    boundaries = [cx1, cx2, cy1, cy2]
-                    horizontal = range(cx1, cx2+1)
-                    vertical = range(cy1, cy2+1)
-                    # bond = [range(1, 4) + range(6, 99)]
-                    # if 1 in bond:
-                    #     print('in bound\n\n')
-                    # else:
-                    #     print('not in bound \n\n')
-                    # print('x', x, x2, toLeft)
-                    # print(horizontal)
-                    # print(x in horizontal)
-                    if toLeft:
-                        if x1 in horizontal:
-                            print('touching on horizontal')
-                        if toTop:
-                            if y1 in vertical:
-
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-                        elif toBottom:
-                            if y1+h in vertical:
-                                addThis(component, relation, 'to')
-
-                                print('touching vertical')
-                        else:
-                            if (y1+y1+h)/2:
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                    elif toRight:
-                        print(x1+w, horizontal)
-                        if x1+w in horizontal:
-                            print('touching on horizontal')
-                        if toTop:
-                            print(y1, vertical)
-                            if y1 in vertical:
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                        elif toBottom:
-                            if y1+h in vertical:
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                        else:
-                            if((y1+y1+h)/2):
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                    elif toTop:
-                        # print(x, horizontal)
-                        if (x1+x1+w)/2 in horizontal:
-                            print('touching horizontal')
-                            print(y1, vertical)
-                            if y1 in vertical:
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                    elif toBottom:
-                        if x1 in horizontal:
-                            print('touching horizontal')
-                            if y1+h in vertical:
-                                print('touching vertical')
-                                addThis(component, relation, 'to')
-
-                            # print(y, y+h, vertical)
-                            # print('y+h', y+h)
-                            # if toTop and y in vertical:
-                            #     print('touching x and y on ', x, y, '\n')
-                            # elif toBottom and y+h in vertical:
-                            #     print('touching x and y2 on ', x, y+h, '\n')
-                            # if toTop and y in boundaries:
-                            #     print('touching x and y on ', x, y, '\n')
-                            # elif toBottom and y+h in boundaries:
-                            #     print('ttttouching x and y2 on ', x, y+h, '\n')
-
-                            # print('center:', (x2-x1)/2+x1, (y2-y1)/2+y1)
-                            # print('')
+        addComponentsToRelation(getElementAtPosition(
+            x1, y1), getElementAtPosition(x2, y2), relation)
 
 
 def printAll():
@@ -361,8 +262,10 @@ def printAll():
     #     print('digital', item.digitalPorts)
     #     print(item.group)
     for item in relations:
-        if item.toEle != None:
-            print(item.name, ' aponta de ', ' para ', item.toEle.name)
+
+        print(item.name)
+        print('aponta de ', item.fromEle.name,
+              ' para ', item.toEle.name)
 
     print(arduino.__dict__)
     # print(arduino.methods[0].__dict__)
@@ -399,12 +302,7 @@ def generateCode():
 
 readUML()
 addMethodsToComponents()
-
 addInfoToRelations()
-
-
 printAll()
-
-
 # generateCode()
 print('end')

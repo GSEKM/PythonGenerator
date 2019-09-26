@@ -287,21 +287,26 @@ def generateCode():
         def generateDecision(element):
             for method in element.methods:
                 p(method.name, '{\n')
-                # print(element.name, ' ', method.name,
-                #   ' ', method.getToElements())
+                print(element.name, ' ', method.name,
+                      ' ', method.getToElements())
 
                 for toElement in method.getToElements():
-                    if 'if' in toElement.name:
+                    for rel in relations:
+                        if rel.toElement == toElement:
+                            relation = rel
+                            print(rel.name)
+                    if 'if' in toElement.name and relation:
                         value = ''
-                        for relation in relations:
-                            if relation.fromElement == toElement:
-                                if 'getThis' in relation.name:
-                                    value = relation.toElement.name.split(' ', 1)[
-                                        1]
-                                elif 'True' in relation.name:
-                                    ifTrue = relation.toElement.name
-                                elif 'False' in relation.name:
-                                    ifFalse = relation.toElement.name
+                        ifTrue = ''
+                        ifFalse = ''
+                        print(relation.name)
+                        if 'getThis' in relation.name:
+                            value = relation.toElement.name.split(' ', 1)[
+                                1]
+                        elif 'True' in relation.name:
+                            ifTrue = relation.toElement.name
+                        elif 'False' in relation.name:
+                            ifFalse = relation.toElement.name
 
                         check = re.sub(
                             r'[0-9]+', '', toElement.name.replace('if', '').replace(' ', ''))
@@ -318,10 +323,11 @@ def generateCode():
                             p(tab*2, ifFalse, ';')
 
                         p(tab, '}')
-                p('\n}')
+                    p('\n}')
 
-                # else:  # just method calling without decision-taking
-                #     p(toElement.name)
+                    # else:
+                    # else:  # just method calling without decision-taking
+                    #     p(toElement.name)
 
         usedDigital = 0
         usedAnalog = 0

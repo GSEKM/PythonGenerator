@@ -251,6 +251,15 @@ def addInfoToRelations():
 
 
 def printAll():
+    # for relation in relations:
+    #     if 'single' in relation.fromElement.name:
+
+    #         print(relation.name, 'aponta de ', relation.fromElement.name, ' para ',
+    #               relation.toElement.name, ' de ', relation.toElement.getParent().name)
+
+    #         print(relation.fromElement.getToElements())
+    #         print(relation.toElement, relation.toElement.name)
+    #         print('\n')
     pass
     # for item in methods:
     #     print(item.group)
@@ -259,13 +268,6 @@ def printAll():
     #     print(item.methods)
     #     print('digital', item.digitalPorts)
     #     print(item.group)
-    # for relation in relations:
-    #     print(relation.name, 'aponta de ', relation.fromElement.name, ' para ',
-    #           relation.toElement.name, ' de ', relation.toElement.getParent().name)
-
-    #     print(relation.fromElement.getToElements())
-    #     print(relation.toElement, relation.toElement.name)
-    #     print('\n')
 
     # print(arduino.__dict__)
     # print(arduino.methods[0].__dict__)
@@ -280,6 +282,46 @@ def generateCode():
             print(''.join(map(str, args)), **kwargs)
             file.write(''.join(map(str, args)), **kwargs)
             file.write('\n')
+        tab = '    '
+
+        def generateDecision(element):
+            for method in element.methods:
+                p(method.name, '{\n')
+                # print(element.name, ' ', method.name,
+                #   ' ', method.getToElements())
+
+                for toElement in method.getToElements():
+                    if 'if' in toElement.name:
+                        value = ''
+                        for relation in relations:
+                            if relation.fromElement == toElement:
+                                if 'getThis' in relation.name:
+                                    value = relation.toElement.name.split(' ', 1)[
+                                        1]
+                                elif 'True' in relation.name:
+                                    ifTrue = relation.toElement.name
+                                elif 'False' in relation.name:
+                                    ifFalse = relation.toElement.name
+
+                        check = re.sub(
+                            r'[0-9]+', '', toElement.name.replace('if', '').replace(' ', ''))
+                        condition = re.sub(
+                            r'[<>=]+', '', toElement.name.replace(
+                                'if', '').replace(' ', ''))
+
+                        p(tab, 'if (', value, check, ' ', condition, '){ \n')
+                        p(tab*2, ifTrue, ';')
+                        p(tab, '}')
+
+                        if ifFalse:
+                            p(tab, 'else {')
+                            p(tab*2, ifFalse, ';')
+
+                        p(tab, '}')
+                p('\n}')
+
+                # else:  # just method calling without decision-taking
+                #     p(toElement.name)
 
         usedDigital = 0
         usedAnalog = 0
@@ -293,33 +335,13 @@ def generateCode():
         p('// and ', arduino.analogPorts, ' analog ports in total with ',
           usedAnalog, ' in use and ', arduino.analogPorts - usedAnalog, ' free')
 
-        for method in arduino.methods:
-            p(method.name, '{\n')
+        generateDecision(arduino)
 
-            for element in method.getToElements():
-                if 'if' in element.name:
-                    value = ''
-
-                    for relation in relations:
-                        print(relation.name)
-                        if 'getThis' in relation.name:
-                            print('found')
-                            if relation.fromElement == element:
-                                value = relation.toElement.name
-
-                    check = re.sub(
-                        r'[0-9]+', '', element.name.replace('if', '').replace(' ', ''))
-                    condition = re.sub(
-                        r'[<>=]+', '', element.name.replace(
-                            'if', '').replace(' ', ''))
-
-                    p('if ( ', value, check, ' ', condition, '){ \n')
-
-                    p('\n}')
-
+        # generateDecision(components[0])
         for component in components:
-            for method in component.methods:
-                p(method.name)
+            pass
+            # for method in component.methods:
+            #     p(method.name)
 
 
 readUML()

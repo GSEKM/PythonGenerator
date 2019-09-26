@@ -3,14 +3,16 @@
 // and 5 analog ports in total with 0 in use and 5 free
 setup(){
 
-loop(){
-
-if ( int getTemp()>= 20){ 
-
 
 }
-singlePress()
-int getTemp()
-turn(int degrees)
-setOff()
-setOn()
+loop(){
+
+    if (getTemp()>= 20){ 
+
+        turn(int degrees);
+    }
+    else {
+        setOn();
+    }
+
+}

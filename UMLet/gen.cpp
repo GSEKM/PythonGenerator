@@ -5,10 +5,10 @@ setup(){
 
 loop(){
 
-    if (>= 20){ 
-
-        ;
-    }
+    if (getTemp()>= 20){ 
+		turn(int degrees);
+	}else{
+		setOn();
     }
 
 }
